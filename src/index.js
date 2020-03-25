@@ -66,7 +66,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
-        //Add code for latestMoveSquare which is just i - latestMoveSquare: i
+        //Add code to store the index of the latest square to be clicked
         latestMoveSquare: i,
       }]),
       stepNumber: history.length,
@@ -87,10 +87,15 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step,move) => {
-      //Add code to access and then render latestMoveSquare here
-      
+      //save the latest square clicked into a const
+      const lastestMoveSquare = step.latestMoveSquare;
+      //logic to take latest square (remember values 0-8 from first step) 
+      //and cover to (row,col) based on row = quotient and  col = remainder by 3
+      const row = 1 + (Math.floor(lastestMoveSquare/3));
+      const col = 1 + lastestMoveSquare % 3;
+      //Strings can be enclosed in '' or "" or ``. `` let us use ${} to embed any expression!
       const desc = move ?
-        'Go to move #' + move :
+        `Go to move #${move} (${row},${col})` :
         'Go to game start';
       return (
         <li key ={ move }>
