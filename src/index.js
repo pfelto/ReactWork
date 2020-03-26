@@ -98,6 +98,7 @@ class Game extends React.Component {
         `Go to move #${move} (${row},${col})` :
         'Go to game start';
       return (
+        //Add to css here to make bold? 
         <li key ={ move }>
           <button onClick={() => this.jumpTo(move)}>
             {desc}
