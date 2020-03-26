@@ -3,7 +3,7 @@
 
 1. [X] Display the location for each move in the format (col, row) in the move history list.
 * Code in challenge1 branch
-2. [ ] Bold the currently selected item in the move list.
+2. [X] Bold the currently selected item in the move list.
 * Code for 1 & 2 in challenge2 branch
 3. [ ] Rewrite Board to use two loops to make the squares instead of hardcoding them.
 4. [ ] Add a toggle button that lets you sort the moves in either ascending or descending order.

@@ -79,28 +79,47 @@ class Game extends React.Component {
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
+
   }
   
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
+    
     const moves = history.map((step,move) => {
       //save the latest square clicked into a const
       const lastestMoveSquare = step.latestMoveSquare;
       //logic to take latest square (remember values 0-8 from first step) 
-      //and cover to (row,col) based on row = quotient and  col = remainder by 3
+      //and covert to (row,col) based on row = quotient by 3 and  col = remainder by 3
       const row = 1 + (Math.floor(lastestMoveSquare/3));
       const col = 1 + lastestMoveSquare % 3;
+
       //Strings can be enclosed in '' or "" or ``. `` let us use ${} to embed any expression!
       const desc = move ?
         `Go to move #${move} (${row},${col})` :
         'Go to game start';
+
+      // code to see what move is and what stepNumber is for bold
+      //alert(`move is ${move}`);
+      //alert(`stepNumber is ${this.state.stepNumber}`);
+      //Add code here to check if move === StepNumber and if so highlight button
+      /* Tried using JS string function bold to make desc bold but doesn't seem to work
+      alert(`desctype is ${typeof desc}`);
+      alert(`desc is ${desc}`);
+      //alert(`desc is ${desc.bold()}`);
+      if(move === this.state.stepNumber){
+        desc.bold();
+      }*/
+      
+      //Code below uses a .css apporach to make button different style if it is selected
+      const classButton = move === this.state.stepNumber ?  'button--bold'  : '';
+
       return (
-        //Add to css here to make bold? 
-        <li key ={ move }>
-          <button onClick={() => this.jumpTo(move)}>
+        //Add here to make bold? or above in logic of map function? 
+        //className is used to specify a Css class
+        <li key ={ move } >
+          <button className={classButton} onClick= {() => this.jumpTo(move)}  >
             {desc}
             </button>
         </li>

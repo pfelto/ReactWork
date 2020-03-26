@@ -49,3 +49,7 @@ body {
     margin-left: 20px;
   }
   
+  /*Added CSS to bold button when move === stepNumber */
+  .button--bold {
+    font-weight: bold;
+  }
