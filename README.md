@@ -1,15 +1,18 @@
 
 ## Challenge Exercises
 
-1. [X] Display the location for each move in the format (col, row) in the move history list.
+1.  [X] Display the location for each move in the format (col, row) in the move history list.
 * Code in challenge1 branch
-2. [X] Bold the currently selected item in the move list.
+2.  [X] Bold the currently selected item in the move list.
 * Code for 1 & 2 in challenge2 branch
-3. [X] Rewrite Board to use two loops to make the squares instead of hardcoding them.
+3.  [X] Seperate components into seperate .js files
+* Code in seperateJs branch
+4.  [X] Rewrite Board to use two loops to make the squares instead of hardcoding them.
 * code for 1, 2 & 3 in challenge3 branch
-4. [ ] Add a toggle button that lets you sort the moves in either ascending or descending order.
-5. [ ] When someone wins, highlight the three squares that caused the win.
-6. [ ] When no one wins, display a message about the result being a draw.
+5.  [ ] Add a toggle button that lets you sort the moves in either ascending or descending order.
+6.  [ ] When someone wins, highlight the three squares that caused the win.
+7.  [ ] When no one wins, display a message about the result being a draw.
+8.  [ ] Add a button to restart the game
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
