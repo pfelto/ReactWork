@@ -1,22 +1,6 @@
 import React from 'react';
 import Square from './Square';
 
-/*
-Figure out a way to create a div board row every row and
-call a renderSquare() 3 times per row then move to the next row
-function printBoard(){
-  let row = 0;
-  let col = 0;
-
-  for(;row < 3;row++){
-    for(;col < 3;col++){
-      <div className="board-row">
-            {this.renderSquare(0)}
-          </div>
-    }
-  }
-}
-*/
 class Board extends React.Component {
     renderSquare(i) {
       return (
@@ -27,13 +11,28 @@ class Board extends React.Component {
       );
     }
 
+    /*
+    Figure out a way to create a div board row every row and
+    call a renderSquare() 3 times per row then move to the next row
+    */
+    printBoard (){
+      let row = 0;
+      let col = 0;
     
+      for(;row < 3;row++){
+        let buttonRow = []
+        for(;col < 3;col++){
+            buttonRow.push(renderSquare(col))
+        }
+      }
+    }
 
     render() {
       return (
 
-        //printBoard()
+        this.printBoard()
         
+        /*
         <div>
           <div className="board-row">
             {this.renderSquare(0)}
@@ -51,7 +50,7 @@ class Board extends React.Component {
             {this.renderSquare(8)}
           </div>
         </div>
-        
+        */
       );
     }
   }
