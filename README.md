@@ -6,6 +6,7 @@
 2. [X] Bold the currently selected item in the move list.
 * Code for 1 & 2 in challenge2 branch
 3. [ ] Rewrite Board to use two loops to make the squares instead of hardcoding them.
+* code for 1, 2 & 3 in challenge3 branch
 4. [ ] Add a toggle button that lets you sort the moves in either ascending or descending order.
 5. [ ] When someone wins, highlight the three squares that caused the win.
 6. [ ] When no one wins, display a message about the result being a draw.
