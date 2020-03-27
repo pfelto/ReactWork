@@ -1,9 +1,9 @@
 
 ## Challenge Exercises
 
-1.  [X] Display the location for each move in the format (col, row) in the move history list.
+1.  -[X] Display the location for each move in the format (col, row) in the move history list.
 * Code in challenge1 branch
-2.  [X] Bold the currently selected item in the move list.
+2.  -[X] Bold the currently selected item in the move list.
 * Code for 1 & 2 in challenge2 branch
 3.  [X] Seperate components into seperate .js files
 * Code in seperateJs branch
