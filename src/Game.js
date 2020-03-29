@@ -111,7 +111,12 @@ class Game extends React.Component {
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
-  
+
+      //let toggle;
+
+      //add a toggle button below... Is this the right place? IDK yet, but onclick reverse moves
+      //Also Not sure if I alert moves here if it will rerender or not.
+      // All logic is above in render, not in the return of render. 
       return (
         <div className="game">
           <div className="game-board">
@@ -122,6 +127,9 @@ class Game extends React.Component {
           </div>
           <div className="game-info">
             <div>{ status }</div>
+            <button onClick = {() => alert("Hello")}>
+              toggle
+            </button>
             <ol>{ moves }</ol>
           </div>
         </div>
