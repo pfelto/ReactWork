@@ -30,7 +30,8 @@ class Game extends React.Component {
           squares: Array(9).fill(null)
         }],
         stepNumber: 0,
-        xIsNext: true
+        xIsNext: true,
+        isToggle: 0
       };
     }
   
@@ -49,7 +50,7 @@ class Game extends React.Component {
           latestMoveSquare: i,
         }]),
         stepNumber: history.length,
-        xIsNext: !this.state.xIsNext,
+        xIsNext: !this.state.xIsNext
       });
     }
   
@@ -60,8 +61,23 @@ class Game extends React.Component {
       });
   
     }
+
+    //Code to Switch Flip
+    toggleSwitch(){
+      //const history = this.state.history.slice(0,this.state.stepNumber + 1);
+      let flipVar = this.state.isToggle;
+      flipVar = 1 - flipVar;
+      //alert(flipVar);
+      this.setState({
+        //history: history.reverse(), This makes the history array flip and the end of the history array is null soooo not right
+        isToggle: flipVar
+      });
+      //alert('toggle flip');
+    }
     
     render() {
+      //alert(this.isToggle); returns undefined because isToggle is part of this.state
+      //alert(this.state.isToggle);
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
@@ -111,12 +127,29 @@ class Game extends React.Component {
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
+      
+      //Code to change color on button when toggled. Change text inside button as well Challenge 4
+      //1 will be Desc and 0 is asc. Asc is normal func already implemented, so In constructutor I made 0 default
+      let toggleButton = '';
+      let toggleButtonText = 'ASC';
+      if(this.state.isToggle === 1){
+        //alert('change color');
+        toggleButton ='button--toggleOn';
+        toggleButtonText = 'DESC';
+        moves.reverse(); //Reverse changes the actual elements in moves so not immutable
+      }
 
       //let toggle;
-
+      //Expected an assigment of function call and instead saw an expression
+      /* Move code to return of Render
+      <button id='toggle' onClick= {()=> alert("Hello")}>
+        toggle
+      </button>
+      */
       //add a toggle button below... Is this the right place? IDK yet, but onclick reverse moves
       //Also Not sure if I alert moves here if it will rerender or not.
       // All logic is above in render, not in the return of render. 
+      //Call toggleFlip code that just flips isToggle from 1 to 0 when button is clicked. 
       return (
         <div className="game">
           <div className="game-board">
@@ -127,9 +160,11 @@ class Game extends React.Component {
           </div>
           <div className="game-info">
             <div>{ status }</div>
-            <button onClick = {() => alert("Hello")}>
-              toggle
+            <div>
+            <button className = {toggleButton} onClick = {() => this.toggleSwitch()}>
+              {toggleButtonText}
             </button>
+            </div>
             <ol>{ moves }</ol>
           </div>
         </div>
