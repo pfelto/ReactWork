@@ -11,9 +11,10 @@
 * code for 1, 2 & 3 in challenge3 branch
 5.  [X] Add a toggle button that lets you sort the moves in either ascending or descending order.
 * Code for 1,2,3,4 in challenge4 branch
-6.  [ ] When someone wins, highlight the three squares that caused the win. Also bold last clicked square
+6.  [X] When someone wins, highlight the three squares that caused the win. Also bold last clicked square
 * code for 1-5 in challenge5 branch
 7.  [ ] When no one wins, display a message about the result being a draw.
+* Code for 1-6 in challenge6 branch
 8.  [ ] Add a button to restart the game
 
 
