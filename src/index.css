@@ -32,8 +32,16 @@ body {
     width: 34px;
   }
   
+  /*code to bold squares on win*/
+  .square--bold{
+    background: purple;
+    outline: bold;
+    border: 3px solid #999;
+  }
+
+  /* make this bold to have the selected square be bold. No need to change css for last selected square manually */
   .square:focus {
-    outline: none;
+    outline: bold;
   }
   
   .kbd-navigation .square:focus {

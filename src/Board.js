@@ -1,12 +1,16 @@
 import React from 'react';
 import Square from './Square';
 
+//Using console.log and F12 way nicer than alert for msgs and vals
+
 class Board extends React.Component {
     renderSquare(i) {
+      const winner = this.props.boldSquares;
       return (
         <Square
           value={this.props.squares[i]}
           onClick={() => this.props.onClick(i)}
+          boldSquares={winner && winner.includes(i)}
         />
       );
     }

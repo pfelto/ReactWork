@@ -1,6 +1,8 @@
 import React from 'react';
 import Board from './Board';
 
+//Using console.log and F12 way nicer than alert for msgs and vals
+
 function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
@@ -15,10 +17,29 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        //See what is in all these squares (they are the winning player and return only 1 X or O for winner)
+        /* can't set the props like that. Will have to look into something else
+        console.log(squares[a]);
+        console.log(squares[b]);
+        console.log(squares[c]);
+        squares[a].props.boldSquare = true;
+        squares[b].props.boldSquare = true;
+        squares[c].props.boldSquare = true;
+        */
+       //Might need to return more than just the value in X and use that for boldSquare logic?
+       //Return the winner like before and also the line that won
+       //Put Draw logic below this for challenge6
+        return {
+        winner: squares[a],
+        winLine: lines[i]
+        };
       }
     }
-    return null;
+    //Need to change return null to this otherwise error for winner.winner undefined
+    return {
+      winner: null,
+      winLine: null
+    };
   }
   
 
@@ -27,10 +48,11 @@ class Game extends React.Component {
       super(props);
       this.state = {
         history: [{
-          squares: Array(9).fill(null)
+          squares: Array(9).fill(null),
         }],
         stepNumber: 0,
         xIsNext: true,
+        //Make this true and false too
         isToggle: 0
       };
     }
@@ -39,10 +61,14 @@ class Game extends React.Component {
       const history = this.state.history.slice(0,this.state.stepNumber + 1);
       const current = history[history.length - 1];
       const squares = current.squares.slice();
-      if (calculateWinner(squares) || squares[i]) {
+      //console.log(squares[i]);
+      //If winner or sqaures[i] is not null just return 
+      //Need to add .winner since calculateWinner returns an array now 
+      if (calculateWinner(squares).winner || squares[i]) {
         return;
       }
       squares[i] = this.state.xIsNext ? 'X' : 'O';
+      
       this.setState({
         history: history.concat([{
           squares: squares,
@@ -70,6 +96,7 @@ class Game extends React.Component {
       //alert(flipVar);
       this.setState({
         //history: history.reverse(), This makes the history array flip and the end of the history array is null soooo not right
+        //isToggle: !this.state.isToggle
         isToggle: flipVar
       });
       //alert('toggle flip');
@@ -79,9 +106,11 @@ class Game extends React.Component {
       //alert(this.isToggle); returns undefined because isToggle is part of this.state
       //alert(this.state.isToggle);
       const history = this.state.history;
+      //console.log(this.state.stepNumber);
       const current = history[this.state.stepNumber];
-      const winner = calculateWinner(current.squares);
-      
+      const { winner,winLine } = calculateWinner(current.squares);
+      //console.log(typeof(winner));
+
       const moves = history.map((step,move) => {
         //save the latest square clicked into a const
         const lastestMoveSquare = step.latestMoveSquare;
@@ -132,6 +161,7 @@ class Game extends React.Component {
       //1 will be Desc and 0 is asc. Asc is normal func already implemented, so In constructutor I made 0 default
       let toggleButton = '';
       let toggleButtonText = 'ASC';
+      //if(this.state.isToggle)
       if(this.state.isToggle === 1){
         //alert('change color');
         toggleButton ='button--toggleOn';
@@ -156,6 +186,7 @@ class Game extends React.Component {
             <Board
               squares={current.squares}
               onClick={(i) => this.handleClick(i)}
+              boldSquares={winLine}
             />
           </div>
           <div className="game-info">
