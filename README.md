@@ -15,8 +15,10 @@
 * code for 1-5 in challenge5 branch
 7.  [X] When no one wins, display a message about the result being a draw.
 * Code for 1-6 in challenge6 branch
-8.  [ ] Add a button to restart the game
+8.  [X] Add a button to restart the game
+* code for 1-7 in challenge7 branch
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

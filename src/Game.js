@@ -47,27 +47,41 @@ function calculateWinner(squares) {
         winLine: lines[i],
         isDraw: false
         };
-      } else if(!squares.includes(null)){
+      } 
+    }
+    //Need to change return null to this otherwise error for winner.winner undefined
+    //challenge6 code to make isDraw true if there is not winner and sqaures is full
+    if(!squares.includes(null)){
         return {
           winner: null,
           winLine: null,
           isDraw: true
         };
-      }
-    }
-    //Need to change return null to this otherwise error for winner.winner undefined
+    } else {
     return {
       winner: null,
       winLine: null,
       isDraw: false
     };
   }
+  }
   
+  //challenge7 make a const of state that is used when restart button is clicked
+  const initialState =  {
+    history: [{
+      squares: Array(9).fill(null),
+    }],
+    stepNumber: 0,
+    xIsNext: true,
+    isToggle: false
+  };
 
 class Game extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
+      this.state = initialState;
+      /*
+      {
         history: [{
           squares: Array(9).fill(null),
         }],
@@ -75,6 +89,7 @@ class Game extends React.Component {
         xIsNext: true,
         isToggle: false
       };
+      */
     }
   
     handleClick(i) {
@@ -125,6 +140,11 @@ class Game extends React.Component {
       //alert('toggle flip');
     }
     
+    //set state to initialstate
+    restartButton(){
+      this.setState(initialState);
+    }
+
     render() {
       //alert(this.isToggle); returns undefined because isToggle is part of this.state
       //alert(this.state.isToggle);
@@ -223,6 +243,9 @@ class Game extends React.Component {
             </button>
             </div>
             <ol>{ moves }</ol>
+            <button onClick = {() => this.restartButton()}>
+              Restart
+            </button>
           </div>
         </div>
       );
